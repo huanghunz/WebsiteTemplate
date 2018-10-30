@@ -14,14 +14,12 @@ export class BsNavbarComponent {
   constructor(private authService: AuthService) {
 
     this.authService.appUser$.subscribe(appUser => 
-      { console.log(appUser);
-      //  return
-      this.appUser= appUser
+      { 
+        this.appUser= appUser
       })
   }
 
   logout(){
     this.authService.logout();
   }
-
 }
