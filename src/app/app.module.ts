@@ -3,7 +3,8 @@ import {environment} from './../environments/environment'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule } from "@angular/forms"
+import { CustomFormsModule } from 'ng2-validation'
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
@@ -28,6 +29,9 @@ import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category.service';
+import { ProductService } from './services/product-service.service';
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +50,8 @@ import { CategoryService } from './services/category.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -59,15 +65,16 @@ import { CategoryService } from './services/category.service';
       { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
       { path:'order-success', component: OrderSucessComponent, canActivate: [AuthGuardService] },
       
-      { path:'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path:'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path:'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path:'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path:'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
     ]),
-    NgbModule.forRoot(),
+    NgbModule.forRoot(), // angular directives for bootstrap
   ],
   providers: [AuthService, AuthGuardService,
               UserService, AdminAuthGuardService,
-              CategoryService],
+              CategoryService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

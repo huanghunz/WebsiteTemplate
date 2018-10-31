@@ -19,16 +19,12 @@ export class CategoryService {
      this.observableCategories$ 
         = this.db.list('/categories', ref => ref.orderByChild('name'))
        .snapshotChanges();
- 
   }
 
    // now map your category key with data here
   getCategories() {
-     return this.observableCategories$.pipe(map(changes => {
-
-       return changes.map(c => { console.log("c: ", c); 
-      return  ( 
-         { key: c.payload.key, ...c.payload.val() })});
-     }));
+     return this.observableCategories$.pipe(map(changes => 
+              changes.map(a => ({ key: a.key, ...a.payload.val()
+            }))));
    }
  }

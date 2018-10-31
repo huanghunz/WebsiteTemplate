@@ -15,7 +15,7 @@ export class BsNavbarComponent {
 
     this.authService.appUser$.subscribe(appUser => 
       { 
-        this.appUser= appUser
+        this.appUser = appUser
       })
   }
 
