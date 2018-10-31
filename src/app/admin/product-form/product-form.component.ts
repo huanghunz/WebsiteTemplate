@@ -14,6 +14,7 @@ import {take} from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any>;
+  id;
 
   product = {
   };
@@ -25,11 +26,11 @@ export class ProductFormComponent implements OnInit {
               categoryService: CategoryService,) { 
     this.categories$ = categoryService.getCategories();
 
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log("??? ", id, "\n", this.route.snapshot.paramMap);
-    if (id && id != 'undefined'){
+    this.id = this.route.snapshot.paramMap.get('id');
+    
+    if (this.id && this.id != 'undefined'){
       // take operator gets 1 item, subscribe, then will not get new value
-      this.productService.get(id).pipe(
+      this.productService.get(this.id).pipe(
                 take(1)).subscribe(p => this.product = p);
     }
     
@@ -40,10 +41,22 @@ export class ProductFormComponent implements OnInit {
 
   save(product){
     //console.log(product);
-
-    this.productService.create(product);
+    if (this.id){
+      this.productService.update(this.id, product);
+    }
+    else{
+      this.productService.create(product);
+    }
     this.router.navigate(['/admin/products']);
   }
+
+  delete(){
+    if (!confirm("Delete this product?")) return;
+
+    this.productService.delete(this.id);
+    this.router.navigate(['/admin/products']);
+  }
+
 
   log(x) { console.log(x)}
 }

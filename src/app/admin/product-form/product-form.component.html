@@ -2,10 +2,11 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form #f="ngForm" (ngSubmit)="save(f.value)">
+    <!-- use button click instead of (ngSubmit)="save(f.value)" -->
+    <form #f="ngForm" >
         <div class="form-group">
           <label for="title">Title</label>
-          <input #title="ngModel" [(ngModel)] = "products && product.title"
+          <input #title="ngModel" [(ngModel)] = "product && product.title"
                   required minlength="2"
                   name="title" id="title" type="text"
                   class="form-control">
@@ -18,7 +19,7 @@
           <label for="price">Price</label>
           <div class="input-group-prepend">
               <span class="input-group-text">$</span>
-              <input #price="ngModel" [(ngModel)] = "products && product.price"
+              <input #price="ngModel" [(ngModel)] = "product && product.price"
                      required [min] = "0"
                      name="price" id="price" type="number"
                      class="form-control">   
@@ -32,7 +33,7 @@
         <div class="form-group">
           <label for="category">Category</label>
           <!-- use multiple directive for multiple selection  -->
-          <select #category="ngModel" [(ngModel)] = "products && product.category"
+          <select #category="ngModel" [(ngModel)] = "product && product.category"
                   required 
                   name="category" id="category" type="text"
                   class="form-control">
@@ -48,7 +49,7 @@
       
         <div class="form-group">
           <label for="imgUrl">Image URL</label>
-          <input #imgUrl="ngModel" [(ngModel)] = "products && product.imgUrl"
+          <input #imgUrl="ngModel" [(ngModel)] = "product && product.imgUrl"
                  required url
                  name="imgUrl" id="imgUrl" type="text"
                  class="form-control">
@@ -57,16 +58,18 @@
               <small *ngIf="imgUrl.errors.url"> Please use a valid url </small>
           </div>
         </div>
-        <button [disabled]="f.invalid" class="btn btn-primary">Save </button>
+        <button (click)="save(f.value)" type="button"[disabled]="f.invalid" class="btn btn-primary">Save</button>
+        <button type="button"[routerLink]="['/admin/products']" class="btn btn-info">Back</button>
+        <button (click)="delete()" type="button" class="btn btn-danger">Delete</button>
 
     </form>
   </div>
   <div class="col-md-6">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" 
+        <img  *ngIf="product"class="card-img-top" 
           [src]="product.imgUrl"
           alt="{{product.title}} image "
-          *ngIf="products ">
+          >
         <div class="card-body">
           <h5 class="card-title">{{product.title}}</h5>
           <p class="card-text">{{product.value | currency: 'USD': true}}</p>

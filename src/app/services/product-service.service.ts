@@ -26,4 +26,13 @@ export class ProductService {
     console.log("id: ", productId, " a: " , a);
     return a;
   }
+
+  update(productId, productNew){
+    // Note: the productNew should not have an id field as id should not be updated.
+    this.db.object('/products/' + productId).update(productNew);
+  }
+
+  delete(productId){
+    this.db.object('/products/' + productId).remove();
+  }
 }
