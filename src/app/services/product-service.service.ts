@@ -22,9 +22,7 @@ export class ProductService {
   }
 
   get(productId) {
-    let a = this.db.object('/products/' + productId).valueChanges();
-    console.log("id: ", productId, " a: " , a);
-    return a;
+    return this.db.object('/products/' + productId).valueChanges();
   }
 
   update(productId, productNew){
