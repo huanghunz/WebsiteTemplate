@@ -7,7 +7,7 @@
         <div class="form-group">
           <label for="title">Title</label>
           <input #title="ngModel" [(ngModel)] = "product && product.title"
-                  required minlength="2"
+                  required
                   name="title" id="title" type="text"
                   class="form-control">
             <div *ngIf="title.touched && title.invalid" class="alert alert-danger">

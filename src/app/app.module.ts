@@ -1,6 +1,8 @@
 
 import {environment} from './../environments/environment'
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from "@angular/forms"
@@ -30,7 +32,12 @@ import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product-service.service';
+import { TableOverviewComponent } from './table-overview/table-overview.component';
 
+import { MatFormFieldModule, MatInputModule, MatSortModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -46,12 +53,22 @@ import { ProductService } from './services/product-service.service';
     AdminOrdersComponent,
     LoginComponent,
     MyOrdersComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    TableOverviewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CustomFormsModule,
+    CustomFormsModule, // for form validation
+
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSortModule,
+
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,
     AngularFireAuthModule,

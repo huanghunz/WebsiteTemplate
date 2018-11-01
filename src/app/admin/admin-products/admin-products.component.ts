@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from './../../services/product-service.service';
 import { Subscription } from 'rxjs';
 import { Product } from './../../models/products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-products',
@@ -14,13 +15,16 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   // products$;
 
   products: Product[];
-  filteredProducts: Product[];
+
+  headers = ['date', 'title', 'price', 'category']
 
   subscription: Subscription;
 
-  constructor(private productService: ProductService) { 
+  constructor(private productService: ProductService,
+              private router: Router) { 
     this.subscription = this.productService.getAll()
-    .subscribe((products: Product[]) => this.filteredProducts = this.products = products);
+    .subscribe((products: Product[]) =>  this.products 
+    = products.sort((a, b)=>(a.title > b.title)? 1 : 0));
   }
 
   ngOnInit() {
@@ -30,11 +34,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  filter(query){
-    //console.log(query);
-    query = query.toLowerCase();
-    this.filteredProducts = (query)?
-      this.products.filter(p => p.title.toLowerCase().includes(query)) : this.products
-
-  }
+   edit(key){
+     //console.log("admi: " + key);
+     this.router.navigate(['/admin/products/', key])
+   }
 }

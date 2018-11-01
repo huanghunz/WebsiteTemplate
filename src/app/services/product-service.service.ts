@@ -11,6 +11,11 @@ export class ProductService {
 
   
   create(product){
+
+    let date = new Date().toISOString();
+    let endIdx = date.indexOf('T');
+    product['date'] = date.substr(0, endIdx);
+    console.log("proc: ", product['date']);
     return this.db.list('/products').push(product);
   }
 
