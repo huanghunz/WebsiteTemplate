@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductService } from 'src/app/services/product-service.service';
+import { ProductService } from './../../services/product-service.service';
 import { Subscription } from 'rxjs';
+import { Product } from './../../models/products';
 
 @Component({
   selector: 'app-admin-products',
@@ -12,15 +13,14 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   // For searching/filtering feature, can not use an observable
   // products$;
 
-  products: any[];
-  filteredProducts: any[];
+  products: Product[];
+  filteredProducts: Product[];
 
   subscription: Subscription;
 
   constructor(private productService: ProductService) { 
-    this.subscription = this.productService.getAll().subscribe(
-      products => this.filteredProducts = this.products = products
-    );
+    this.subscription = this.productService.getAll()
+    .subscribe((products: Product[]) => this.filteredProducts = this.products = products);
   }
 
   ngOnInit() {
