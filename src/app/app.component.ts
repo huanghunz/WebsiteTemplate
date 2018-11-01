@@ -15,12 +15,15 @@ export class AppComponent {
               private router: Router,
               private userService: UserService){
     this.authService.user$.subscribe(user=>{
-      if (user){
-        this.userService.save(user); // TODO: add registration form
+      if (!user) return;
 
-        let returnUrl = localStorage.getItem('returnUrl');
-        this.router.navigateByUrl(returnUrl);
-      }
+      this.userService.save(user); // TODO: add registration form
+
+      let returnUrl = localStorage.getItem('returnUrl');
+      
+      if (!returnUrl) return;      
+      localStorage.removeItem('returnUrl')
+      this.router.navigateByUrl(returnUrl);
     })
   }
 }
