@@ -22,7 +22,7 @@ export class CategoryService {
   }
 
    // now map your category key with data here
-  getCategories() {
+  getAll() {
      return this.observableCategories$.pipe(map(changes => 
               changes.map(a => ({ key: a.key, ...a.payload.val()
             }))));

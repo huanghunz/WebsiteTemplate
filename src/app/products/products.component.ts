@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { ProductService } from '../services/product-service.service';
+import { Product } from '../models/products';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -8,7 +11,28 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase) { }
+  products: Product[];
+  filteredProducts;
+
+  category: string;
+
+  constructor(route: ActivatedRoute,
+              private productService: ProductService) { 
+              
+    this.productService.getAll()
+      .pipe(switchMap(
+        (products: Product[])=> 
+        { 
+          this.products = products;
+          return route.queryParamMap
+        }))
+        .subscribe(params=>{
+          this.category = params.get('category');
+          this.filteredProducts = (this.category) && this.products?
+              this.products.filter(p=>p.category === this.category)
+              : this.products
+        })
+  }
 
   ngOnInit() {
   }

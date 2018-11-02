@@ -24,7 +24,7 @@ export class ProductFormComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               categoryService: CategoryService,) { 
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     
@@ -39,7 +39,8 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  save(product){
+  save( product){
+
     //console.log(product);
     if (this.id){
       this.productService.update(this.id, product);

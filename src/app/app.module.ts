@@ -38,6 +38,8 @@ import { MatFormFieldModule, MatInputModule, MatSortModule } from '@angular/mate
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { MatButtonModule } from '@angular/material/button';
     LoginComponent,
     MyOrdersComponent,
     ProductFormComponent,
-    TableOverviewComponent
+    TableOverviewComponent,
+    ProductViewComponent,
+    CategoryViewComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,7 @@ import { MatButtonModule } from '@angular/material/button';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      { path:'', component: HomeComponent },
+      { path:'', component: ProductsComponent },
       { path:'products', component: ProductsComponent },
       { path:'shopping-cart', component: ShoppingCartComponent },
       { path:'login', component: LoginComponent },
