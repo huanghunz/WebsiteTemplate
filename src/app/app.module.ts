@@ -40,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { CategoryViewComponent } from './category-view/category-view.component';
   ],
   providers: [AuthService, AuthGuardService,
               UserService, AdminAuthGuardService,
-              CategoryService, ProductService],
+              CategoryService, ProductService,
+              ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
