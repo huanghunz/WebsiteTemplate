@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Subscription } from 'rxjs';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-products',
@@ -14,10 +15,10 @@ import { Subscription } from 'rxjs';
 export class ProductsComponent implements OnInit, OnDestroy {
  
   products: Product[];
-  filteredProducts;
+  filteredProducts: Product[];;
 
   category: string;
-  shoppingCart;
+  shoppingCart : ShoppingCart;
   subscription: Subscription;
 
   constructor(route: ActivatedRoute,
@@ -42,10 +43,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.subscription
       = (await this.cartService.getCart())
-        .valueChanges().subscribe(
-          (cart:any) => {
-            this.shoppingCart = cart[0]
-            //console.log("cart: " , cart[0]);
+        .subscribe(
+          (cart) => {
+            this.shoppingCart = cart;
           })
 
   }
