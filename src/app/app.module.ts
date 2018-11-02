@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSucessComponent } from './order-sucess/order-sucess.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component' 
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
@@ -50,7 +50,7 @@ import { CategoryViewComponent } from './category-view/category-view.component';
     ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
-    OrderSucessComponent,
+    OrderSuccessComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
@@ -58,7 +58,7 @@ import { CategoryViewComponent } from './category-view/category-view.component';
     ProductFormComponent,
     TableOverviewComponent,
     ProductViewComponent,
-    CategoryViewComponent
+    CategoryViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +84,7 @@ import { CategoryViewComponent } from './category-view/category-view.component';
 
       { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]  },
       { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
-      { path:'order-success', component: OrderSucessComponent, canActivate: [AuthGuardService] },
+      { path:'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       
       { path:'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path:'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
