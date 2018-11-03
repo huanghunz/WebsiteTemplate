@@ -11,10 +11,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let id of cart.productsIds">
-        <td>{{ cart.items[id].product.title}}</td>
-        <td>{{ cart.items[id].quantity}}</td>
-        <td>{{ cart.items[id]}}</td>
+      <tr *ngFor="let i of cart.items">
+        <td>{{ i.product.title}}</td>
+        <td>{{ i.quantity}}</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

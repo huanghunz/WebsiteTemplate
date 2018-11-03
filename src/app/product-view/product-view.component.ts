@@ -30,8 +30,8 @@ export class ProductViewComponent implements OnInit {
   getQuantity(){
     if (!this.shoppongCart) return 0;
 
-    let item = this.shoppongCart.items[this.product.key];
-   // console.log(this.shoppongCart, this.product.key);
+    let item = this.shoppongCart.itemsMap[this.product.key];
+   //console.log(this.shoppongCart, this.product.key);
     return item? item.quantity : 0;
   }
 
