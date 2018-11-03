@@ -26,11 +26,7 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
   async ngOnInit() {
 
     this.subscription = (await this.cartService.getCart())
-    .subscribe( c =>{
-    
-      this.cart  = c;
-    });
-    
+                    .subscribe( c =>{ this.cart  = c;  });
    
     this.authService.appUser$.subscribe(appUser => 
       { 
