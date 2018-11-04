@@ -5,15 +5,21 @@
   <table class="table">
     <thead>
       <tr class="text-center">
+        <th></th>
         <th>Product</th>
         <th>Quantity</th>
-        <th></th>
+        <th>Price </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let i of cart.items">
+        <td class="align-center">
+          <div class="thumbnail align-center" alt="product"
+               [style.backgroundImage]="'url('+ i.imgUrl +')'" >
+          </div>
+        </td>
         <td class="align-center">{{ i.title }}</td>
-        <td>
+        <td  class="align-center">
           <span class="row no-gutters">         
             <app-product-quantity  style="width:100%"
         
@@ -28,6 +34,7 @@
     </tbody>
     <tfoot>
       <tr>
+          <th class="align-center"></th>
         <th class="align-center"></th>
         <th class="align-center"></th>
         <th class="align-center"> {{ cart.totalPrice | currency:'USD'}}</th>

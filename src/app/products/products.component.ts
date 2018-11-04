@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   filteredProducts: Product[];;
 
   category: string;
-  shoppingCart : ShoppingCart;
+  cart : ShoppingCart;
   subscription: Subscription;
 
   constructor(route: ActivatedRoute,
@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       = (await this.cartService.getCart())
         .subscribe(
           (cart) => {
-            this.shoppingCart = cart;
+            this.cart = cart;
           })
 
   }
