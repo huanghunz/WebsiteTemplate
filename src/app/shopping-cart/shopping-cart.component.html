@@ -4,7 +4,7 @@
 
   <table class="table">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th>Product</th>
         <th>Quantity</th>
         <th></th>
@@ -12,10 +12,29 @@
     </thead>
     <tbody>
       <tr *ngFor="let i of cart.items">
-        <td>{{ i.product.title}}</td>
-        <td>{{ i.quantity}}</td>
+        <td class="text-center">{{ i.title }}</td>
+        <td>
+          <div class="row no-gutters">
+          
+              <app-product-quantity
+        
+              [product]="i"
+              [shopping-cart]="cart">
+    
+            </app-product-quantity>
+        </div>
+        </td>
+        <td>{{ i.totalPrice | currency:'USD'}}</td>
         <td></td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th> {{ cart.totalPrice | currency:'USD'}}</th>
+      </tr>
+
+    </tfoot>
   </table>
 </ng-container>

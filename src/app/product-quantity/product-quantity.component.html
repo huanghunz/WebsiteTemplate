@@ -1,0 +1,15 @@
+<div class="row no-gutters">
+    <div class="col-3" (click)="removeFromCart()">
+      <button [disabled]="quantity == 0 "class="btn btn-secondary btn-block text-center">
+          <i class="material-icons">remove_circle_outline</i>
+      </button>
+    </div>
+    <div class="col text-center align-self-center">
+        {{ quantity }} 
+    </div>
+    <div class="col-3"  (click)="addToCart()">
+        <button class="btn btn-secondary btn-block">
+          <i class="material-icons">add_circle_outline</i>
+        </button>
+  </div>
+</div>

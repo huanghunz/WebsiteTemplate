@@ -38,9 +38,13 @@ import { MatFormFieldModule, MatInputModule, MatSortModule } from '@angular/mate
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
+
+
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 
 @NgModule({
@@ -60,6 +64,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     TableOverviewComponent,
     ProductViewComponent,
     CategoryViewComponent,
+    ProductQuantityComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MatSortModule,
+    MatIconModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,

@@ -12,7 +12,7 @@ export class ProductViewComponent implements OnInit {
 
   @Input() product: Product;
   @Input('show-actions') showActoin = true; 
-  @Input('shopping-cart') shoppongCart: ShoppingCart; 
+  @Input('shopping-cart') cart: ShoppingCart; 
 
   constructor(private cartService: ShoppingCartService) { 
   }
@@ -22,17 +22,6 @@ export class ProductViewComponent implements OnInit {
 
   addToCart(){
     this.cartService.addToCart(this.product);
+    
   }
-  removeFromCart(){
-    this.cartService.removeFromCart(this.product)
-  }
-
-  getQuantity(){
-    if (!this.shoppongCart) return 0;
-
-    let item = this.shoppongCart.itemsMap[this.product.key];
-   //console.log(this.shoppongCart, this.product.key);
-    return item? item.quantity : 0;
-  }
-
 }
