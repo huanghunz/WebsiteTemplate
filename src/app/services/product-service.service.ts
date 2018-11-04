@@ -26,7 +26,7 @@ export class ProductService {
           changes.map(a => ({ key: a.key, ...a.payload.val() }))));
   }
 
-  get(productId) {
+  get(productId: string) {
     return this.db.object('/products/' + productId).valueChanges();
   }
 

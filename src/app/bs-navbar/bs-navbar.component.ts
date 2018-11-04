@@ -12,12 +12,11 @@ import { take } from 'rxjs/operators';
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
-export class BsNavbarComponent implements OnInit, OnDestroy{
+export class BsNavbarComponent implements OnInit{
   
  
   appUser: AppUser;
-  cart;
-  subscription: Subscription;
+  cart$: Observable<ShoppingCart>;
 
   constructor(private authService: AuthService,
              private cartService: ShoppingCartService) {
@@ -25,17 +24,12 @@ export class BsNavbarComponent implements OnInit, OnDestroy{
 
   async ngOnInit() {
 
-    this.subscription = (await this.cartService.getCart())
-                    .subscribe( c =>{ this.cart  = c;  });
+    this.cart$ = await this.cartService.getCart();
    
     this.authService.appUser$.subscribe(appUser => 
       { 
         this.appUser = appUser
       })
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
   
   logout(){

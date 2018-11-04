@@ -14,10 +14,9 @@ import {take} from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any>;
-  id;
+  id: string;
 
-  product = {
-  };
+  product = { }; // A product object without key
 
   constructor(
               private productService: ProductService,
@@ -33,7 +32,6 @@ export class ProductFormComponent implements OnInit {
       this.productService.get(this.id).pipe(
                 take(1)).subscribe(p => this.product = p);
     }
-    
   }
 
   ngOnInit() {
@@ -41,7 +39,6 @@ export class ProductFormComponent implements OnInit {
 
   save( product){
 
-    //console.log(product);
     if (this.id){
       this.productService.update(this.id, product);
     }
@@ -57,7 +54,4 @@ export class ProductFormComponent implements OnInit {
     this.productService.delete(this.id);
     this.router.navigate(['/admin/products']);
   }
-
-
-  log(x) { console.log(x)}
 }

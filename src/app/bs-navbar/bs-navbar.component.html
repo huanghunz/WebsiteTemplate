@@ -5,12 +5,12 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+    <ul *ngIf="cart$ | async as cart" class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">
           Shopping Cart
           <span *ngIf="cart" class="badge badge-warning badeg-pill">
-            {{  cart.itemsCount }}
+            {{ cart.itemsCount }}
           </span>
         </a>
       </li>

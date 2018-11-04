@@ -26,9 +26,6 @@ export class ProductsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // this.subscription
-    //   = (await this.cartService.getCart())
-    //     .subscribe( (cart) => { this.cart = cart; })
     this.cart$ = await this.cartService.getCart();
 
     this.populateProducts();
