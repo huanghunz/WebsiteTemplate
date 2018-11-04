@@ -14,26 +14,17 @@ export class ProductQuantityComponent implements OnInit {
   
   @Input('shopping-cart') cart: ShoppingCart;
 
-  quantity: number = 0;
-
   constructor(private cartService: ShoppingCartService) { 
     
   }
   
   ngOnInit() {
-    this.updateQuantity();
   }
 
   addToCart(){
     this.cartService.addToCart(this.product);
   }
   removeFromCart(){
-    this.cartService.removeFromCart(this.product)
+    this.cartService.removeFromCart(this.product);
   }
-
-  updateQuantity(){
-    this.quantity = this.cart.getQuantity(this.product);
-  }
-
-
 }

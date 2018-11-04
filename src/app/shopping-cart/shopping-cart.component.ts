@@ -16,20 +16,15 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.subscription = (await this.cartService.getCart())
-                    .subscribe( c =>{ this.cart  = c; 
-                    });
+                    .subscribe( c =>{ this.cart  = c; });
   }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 
-  addToCart(product){
-    this.cartService.addToCart(product);
-  }
-
-  removeFromCart(product){
-    this.cartService.removeFromCart(product);
+  clearCart(){
+    this.cartService.clearCart();
   }
 
 }

@@ -23,6 +23,11 @@ export class ShoppingCartService {
     this.updateItem(product, -1);
   }
 
+  async clearCart(){
+    let cartId = await this.getOrCreateId();
+    return this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
   async getCart(): Promise<Observable<ShoppingCart>>{
     let cartId = await this.getOrCreateId();
     return this.db.object('/shopping-carts/' + cartId)
@@ -60,13 +65,20 @@ export class ShoppingCartService {
      
     item$.snapshotChanges().pipe(take(1)).subscribe(item => {
       const itemPayload:any = item.payload.val();
-      console.log(itemPayload);
+
+      const quantity = (itemPayload ? itemPayload.quantity : 0) + change;
+      
+      if (quantity == 0){
+        item$.remove();
+        return;
+      }
+      
       item$.update({
         title: product.title,
         price: product.price,
         // category: product.category,
         imgUrl: product.imgUrl,
-        quantity: (itemPayload ? itemPayload.quantity : 0) + change
+        quantity: quantity
       });
       });
     }

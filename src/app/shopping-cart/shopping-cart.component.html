@@ -1,5 +1,5 @@
 <h1> SHopping cart!</h1>
-<ng-container *ngIf="cart">
+<div class="col-10" *ngIf="cart">
   <p> Yo {{ cart.itemsCount }} !! </p>
 
   <table class="table">
@@ -12,29 +12,29 @@
     </thead>
     <tbody>
       <tr *ngFor="let i of cart.items">
-        <td class="text-center">{{ i.title }}</td>
+        <td class="align-center">{{ i.title }}</td>
         <td>
-          <div class="row no-gutters">
-          
-              <app-product-quantity
+          <span class="row no-gutters">         
+            <app-product-quantity  style="width:100%"
         
               [product]="i"
               [shopping-cart]="cart">
     
             </app-product-quantity>
-        </div>
+          </span>
         </td>
-        <td>{{ i.totalPrice | currency:'USD'}}</td>
-        <td></td>
+        <td class="align-center" >{{ i.totalPrice | currency:'USD'}}</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <th></th>
-        <th></th>
-        <th> {{ cart.totalPrice | currency:'USD'}}</th>
+        <th class="align-center"></th>
+        <th class="align-center"></th>
+        <th class="align-center"> {{ cart.totalPrice | currency:'USD'}}</th>
       </tr>
 
     </tfoot>
   </table>
-</ng-container>
+  <button class="btn btn-warning btn-sm"
+  (click)="clearCart()">Clear All</button>
+</div>
