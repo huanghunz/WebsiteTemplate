@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.thumbnailDiv{
+    width: 80px;
+}
+
 .thumbnail{
     width: 80px;
     height: 80px;
