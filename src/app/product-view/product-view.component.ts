@@ -22,6 +22,9 @@ export class ProductViewComponent implements OnInit {
 
   addToCart(){
     this.cartService.addToCart(this.product);
-    
+  }
+
+  click(){
+    console.log("click");
   }
 }

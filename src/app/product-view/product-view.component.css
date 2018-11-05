@@ -1,0 +1,12 @@
+.card-text{
+    font-weight: bold;
+}
+
+.thumbnail{
+    width: 100%;
+    height: 200px;
+    border-radius: 0%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

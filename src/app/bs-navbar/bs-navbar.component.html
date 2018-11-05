@@ -13,6 +13,19 @@
             {{ cart.itemsCount }}
           </span>
         </a>
+        
+      </li>
+      <li ngbDropdown class="nav-item">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle"
+             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Hello</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            
+              <app-category-view [category]="category"></app-category-view>
+            
+            <!-- <a class="dropdown-item" routerLink="/admin/orders">Manager Orders</a>
+            <a class="dropdown-item" routerLink="/admin/products">Manager Products</a> -->
+          </div>
       </li>
 
       <ng-template #anonymousUser>
@@ -22,6 +35,7 @@
       </ng-template>
     
       <!-- authService.appUser$ | async as user; ->this appraoch casue infinity loop without throwing error -->
+
       <li ngbDropdown *ngIf="appUser else anonymousUser" class="nav-item dropdown">
         <a ngbDropdownToggle class="nav-link dropdown-toggle"
            id="dropdown01" data-toggle="dropdown" aria-haspopup="true"

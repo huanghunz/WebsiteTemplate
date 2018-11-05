@@ -1,7 +1,13 @@
-<div *ngIf="product.title" class="card">
-  <img *ngIf="product.imgUrl" [src]="product.imgUrl" alt=" {{ product.title }} " class="card-img-top">
+<div *ngIf="product && product.title" class="card"
+
+  (click)="click()" routerLink='/shopping-cart'>
+ 
+  <a  class="card-img-top thumbnail" alt="product"
+               [style.backgroundImage]="'url('+ product.imgUrl +')'" >
+</a>
+
   <div class="card-body">
-    <h4 class="card-title"> {{product.title}}</h4>
+    <h6 class="card-title"> {{product.title}}</h6>
     <p class="card-text">{{ product.price | currency:'USD' }}</p>
   </div>
   <div  *ngIf="showActoin && cart" class="card-footer">
