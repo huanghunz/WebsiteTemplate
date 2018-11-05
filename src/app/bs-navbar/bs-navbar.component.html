@@ -6,15 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul *ngIf="cart$ | async as cart" class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart">
-          Shopping Cart
-          <span *ngIf="cart" class="badge badge-warning badeg-pill">
-            {{ cart.itemsCount }}
-          </span>
-        </a>
-        
-      </li>
+   
       <li ngbDropdown class="nav-item">
           <a ngbDropdownToggle class="nav-link dropdown-toggle"
              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
@@ -53,7 +45,9 @@
       <li ngbDropdown *ngIf="appUser else anonymousUser" class="nav-item dropdown">
         <a ngbDropdownToggle class="nav-link dropdown-toggle"
            id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-           aria-expanded="false">{{appUser.name}}</a>
+           aria-expanded="false">
+           
+           {{appUser.name}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
           <ng-container *ngIf="appUser.isAdmin">
@@ -63,8 +57,18 @@
           <a *ngIf="appUser" class="dropdown-item" (click)="logout()"> Log Out</a>
         </div>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-cart">
+            Shopping Cart
+            <span *ngIf="cart" class="badge badge-warning badeg-pill">
+              {{ cart.itemsCount }}
+            </span>
+          </a>
+          
+        </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      
       <input class="form-control mr-sm-2" type="text" placeholder="TODO Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>

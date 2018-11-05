@@ -2,6 +2,7 @@ import { Component, OnInit, Input, AfterViewInit, DoCheck } from '@angular/core'
 import { Product } from '../models/products';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-view',
@@ -16,8 +17,8 @@ export class ProductViewComponent implements DoCheck {
   @Input('preview-only') previewOnly = false;
 
   coverImgUrl: string;
-  constructor(private cartService: ShoppingCartService) { 
-    
+  constructor(private cartService: ShoppingCartService,
+              private router: Router) {
   }
   
   ngDoCheck() {
@@ -29,7 +30,10 @@ export class ProductViewComponent implements DoCheck {
   }
 
   updateCoverImage(url){
-    console.log("clcik: ", url);
     this.coverImgUrl = url;
+  }
+
+  click(key){
+    this.router.navigate(['/product/details/', key])
   }
 }

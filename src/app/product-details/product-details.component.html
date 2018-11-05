@@ -1,0 +1,27 @@
+<div *ngIf= "cart" class="row container">
+  <div *ngIf="product" class="col-4">
+      <app-product-view 
+      [preview-only]="false"
+      [show-actions]="true"
+      [product]="product"
+      [show-actions]="false"></app-product-view>
+  </div>
+  <div *ngIf="product" class="col right">
+     <div>
+        <button mat-raised-button color="warn" 
+        [matBadge]=" cart.getQuantity(product)" matBadgeOverlap="false"(click)="addToCart()">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+       
+     </div>
+     <div>
+       <div class="title">
+          <h4>{{ product.summary }}</h4>
+       </div>
+       <ul class="details" *ngFor= "let d of product.details">
+         <li *ngIf="d">{{ d }}</li>
+       </ul>
+     </div>
+  </div>
+</div>

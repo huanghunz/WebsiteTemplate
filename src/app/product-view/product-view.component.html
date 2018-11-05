@@ -1,6 +1,7 @@
 <div *ngIf="coverImgUrl && product && product.title" class="card">
  
-  <a *ngIf="previewOnly"  routerLink='/shopping-cart' 
+  <a *ngIf="previewOnly"  routerLink='/product/details/'
+               (click)="click(product.key)"
                class="card-img-top img"
                [style.backgroundImage]="'url('+ product.imgUrl +')'" >
   </a>
@@ -12,28 +13,7 @@
     <h6 class="card-title"> {{product.title}}</h6>
     <p class="card-text">{{ product.price | currency:'USD' }}</p>
   </div>
-  <div  *ngIf="showActoin && cart" class="card-footer">
-      <button *ngIf="cart.getQuantity(product) === 0; else updateQuantity"
-              (click)="addToCart()"
-              class="btn btn-secondary btn-block">
-              Add to Cart
-      </button>
-      <ng-template #updateQuantity>
-        <app-product-quantity
-        
-          [product]="product"
-          [shopping-cart]="cart">
 
-        </app-product-quantity>
-        <div>
-          <a class="icon"
-            [style.backgroundImage]="'url('+ product.imgUrl +')'" >
-          </a>
-        </div>
-        
-      </ng-template>
-      
-  </div>
 </div>
 <div *ngIf="!previewOnly" class="flexDiv">
     <div class="icon" (click)="updateCoverImage(product.imgUrl)"
@@ -46,3 +26,4 @@
   </div>
 
 </div>
+<div class="bottom"></div>

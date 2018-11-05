@@ -1,0 +1,17 @@
+.container{
+    
+    margin-top: 80px;
+}
+
+.right{
+    margin-left: 10px;
+}
+
+.right .title{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.right .details{
+    margin-bottom: 0;
+}

@@ -39,13 +39,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon'
-
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ItemComponent } from './admin/product-form/item/item.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { ItemComponent } from './admin/product-form/item/item.component';
     CategoryViewComponent,
     ProductQuantityComponent,
     ItemComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { ItemComponent } from './admin/product-form/item/item.component';
     MatButtonModule,
     MatSortModule,
     MatIconModule,
+    MatBadgeModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,
@@ -90,7 +93,8 @@ import { ItemComponent } from './admin/product-form/item/item.component';
       { path:'products', component: ProductsComponent },
       { path:'shopping-cart', component: ShoppingCartComponent },
       { path:'login', component: LoginComponent },
-
+      { path:'product/details/:id', component: ProductDetailsComponent},
+      
       { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]  },
       { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
       { path:'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },

@@ -9,6 +9,8 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+
+    background-color: black
 }
 
 .icon{
@@ -24,4 +26,13 @@
 .flexDiv{
     display: flex;
     flex-wrap: wrap;
+}
+
+.card-footer{
+    padding: 0;
+    
+}
+
+.bottom{
+    margin-bottom: 10px;
 }
