@@ -7,6 +7,8 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Observable } from 'rxjs';
 import { ShoppingCart } from '../models/shopping-cart';
 
+import { HostListener } from "@angular/core";
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -20,6 +22,16 @@ export class ProductsComponent implements OnInit {
   category: string;
   cart$: Observable<ShoppingCart>;
 
+  screenHeight: number;
+  screenWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+      console.log("h: " , window.innerHeight, " w" , window.innerWidth)
+      this.screenHeight = window.innerHeight;
+      this.screenWidth = window.innerWidth;
+}
+
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
               private cartService: ShoppingCartService) { 
@@ -29,6 +41,8 @@ export class ProductsComponent implements OnInit {
     this.cart$ = await this.cartService.getCart();
 
     this.populateProducts();
+
+    this.onResize();
   }
 
   private populateProducts(){

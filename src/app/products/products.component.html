@@ -3,7 +3,11 @@
   <div class="col">
     <div class="row" *ngIf="cart$ | async as cart">
         <ng-container >
-          <div class="col-3 col-sm-3 col-md-3 col-lg-3" *ngFor= "let p of filteredProducts; let i = index">
+          <div [className]="screenWidth > 800?
+                             'col-3': 
+                             screenWidth > 600?
+                             'col-6':
+                             'col-12'" *ngFor= "let p of filteredProducts; let i = index">
            <app-product-view
             [preview-only]="true"
             [shopping-cart] = "cart"
