@@ -19,6 +19,10 @@ export class BsNavbarComponent implements OnInit{
   categories$: Observable<string[]>
 
   category: string;
+
+  logo1 = "./../assets/images/logo.png"
+  logo2 = "assets/images/logo2.png"
+
   constructor(private authService: AuthService,
              private cartService: ShoppingCartService,
              private categoryService: CategoryService) {
@@ -40,7 +44,6 @@ export class BsNavbarComponent implements OnInit{
   }
 
   categoryClicked(name){
-    console.log(name)
     this.category = name;
   }
 }

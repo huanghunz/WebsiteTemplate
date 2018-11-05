@@ -1,4 +1,32 @@
 .container{
     padding-left: 80px;
     padding-right: 80px;
+    margin-top: 80px;
+}
+
+.appBody{
+    padding-bottom: 150px;
+    background-color: rgba(231, 231, 231, 0.678)
+}
+
+
+.logo {
+    border: 2px solid black;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background:url('https://firebasestorage.googleapis.com/v0/b/harvardschrome.appspot.com/o/assets_images%2Flogo2.png?alt=media&token=2fbefb48-82e7-4124-9350-0b9f6316f3ac');
+}
+
+.app{
+    border: 2px solid black;
+   
+    background-repeat: no-repeat;
+    background-size: contain;
+    background:url('https://firebasestorage.googleapis.com/v0/b/harvardschrome.appspot.com/o/assets_images%2Flogo2.png?alt=media&token=2fbefb48-82e7-4124-9350-0b9f6316f3ac');
+}
+
+.page-footer{
+    
+    background-color: rgba(231, 231, 231, 0.678)
 }

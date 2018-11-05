@@ -1,14 +1,26 @@
-<app-bs-navbar></app-bs-navbar>
+<div class="app">
+  <div class="appHead">
+      <div class="head">
+          <div class="logo"></div>
+        </div>
+  </div>
+  <div class="appBody">
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+    
+    <app-bs-navbar></app-bs-navbar>
 
-<footer class="page-footer font-small blue">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright: Harvard's Chrome
+    <div class="container">
+      <router-outlet></router-outlet>
     </div>
-    <!-- Copyright -->
+
+  </div>
   
-  </footer>
+  <footer class="page-footer font-small blue">
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2018 Copyright: Harvard's Chrome
+      </div>
+      <!-- Copyright -->
+    
+    </footer>
+</div>

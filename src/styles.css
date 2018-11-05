@@ -2,7 +2,7 @@
 
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-body {padding-top: 80px;}
+
 
 .material-icons {
     vertical-align: middle;
