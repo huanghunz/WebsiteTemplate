@@ -36,7 +36,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
    edit(key){
-     //console.log("admi: " + key);
      this.router.navigate(['/admin/products/', key])
    }
 }
