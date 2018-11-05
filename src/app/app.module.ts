@@ -45,6 +45,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ItemComponent } from './admin/product-form/item/item.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductViewComponent,
     CategoryViewComponent,
     ProductQuantityComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

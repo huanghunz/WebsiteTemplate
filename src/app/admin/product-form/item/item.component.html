@@ -1,0 +1,9 @@
+<div>
+    <i mat-button class="md-18" (click)="add()" ><mat-icon>add_circle_outline</mat-icon>
+    {{ title }}</i>
+</div>
+<div  class="input-group-prepend" *ngFor="let item of items; let i = index">
+  
+    <span mat-button class="iconBtn" (click)="remove(i)" ><mat-icon>remove_circle_outline</mat-icon></span>
+    <input type="text" class="form-control" [value]="item" (blur)="valueChanges(i, $event.target.value)">    
+</div>

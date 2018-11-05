@@ -6,6 +6,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import {take} from 'rxjs/operators';
 
+
+export interface NewProduct{
+  title: string;
+  price: number;
+  category: string;
+  imgUrl: string; // cover image
+  date: string;
+  summary: string;
+  imgUrls:string[];
+  details:string[];
+}
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -15,8 +27,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any>;
   id: string;
-
-  product = { }; // A product object without key
+  product : NewProduct;
 
   constructor(
               private productService: ProductService,
@@ -30,14 +41,39 @@ export class ProductFormComponent implements OnInit {
     if (this.id && this.id != 'undefined'){
       // take operator gets 1 item, subscribe, then will not get new value
       this.productService.get(this.id).pipe(
-                take(1)).subscribe(p => this.product = p);
+                take(1)).subscribe( (p:any) =>{
+                  this.product = p;
+                  console.log("fecth p: ", p);
+                });
+    }
+
+    if (!this.product){
+      this.product = {
+        title: "New Product",
+        price: 0,
+        category: "",
+        date: "",
+      
+        imgUrl: "", // cover image
+        imgUrls:[],
+
+        summary: "",
+        details:[],
+      }
     }
   }
 
   ngOnInit() {
   }
 
-  save( product){
+  save(){
+
+    let product: NewProduct;
+    product = {
+      ...this.product
+    }
+    
+    console.log("cr: ", product);
 
     if (this.id){
       this.productService.update(this.id, product);
