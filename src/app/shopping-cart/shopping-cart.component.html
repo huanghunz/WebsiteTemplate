@@ -1,6 +1,6 @@
-<h1> SHopping cart!</h1>
+<h1> Shopping cart</h1>
 <div class="col-10" *ngIf = "cart$ | async as cart">
-  <p> Yo {{ cart.itemsCount }} !! </p>
+  <p> You have {{ cart.itemsCount }} items in your cart. </p>
 
   <table  class="table">
     <thead>

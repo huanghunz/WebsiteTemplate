@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, DoCheck } from '@angular/core';
 import { Product } from '../models/products';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
@@ -8,23 +8,28 @@ import { ShoppingCart } from '../models/shopping-cart';
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.css']
 })
-export class ProductViewComponent implements OnInit {
-
+export class ProductViewComponent implements DoCheck {
+ 
   @Input() product: Product;
   @Input('show-actions') showActoin = true; 
-  @Input('shopping-cart') cart: ShoppingCart; 
+  @Input('shopping-cart') cart: ShoppingCart;
+  @Input('preview-only') previewOnly = false;
 
+  coverImgUrl: string;
   constructor(private cartService: ShoppingCartService) { 
+    
   }
   
-  ngOnInit() {
+  ngDoCheck() {
+    if (!this.coverImgUrl) this.coverImgUrl = this.product.imgUrl;
   }
 
   addToCart(){
     this.cartService.addToCart(this.product);
   }
 
-  click(){
-    console.log("click");
+  updateCoverImage(url){
+    console.log("clcik: ", url);
+    this.coverImgUrl = url;
   }
 }

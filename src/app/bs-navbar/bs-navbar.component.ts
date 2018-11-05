@@ -3,9 +3,8 @@ import { AuthService } from './../services/auth.service';
 import { AppUser } from '../models/app-users';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
-import { Observable, Subscription } from 'rxjs';
-import { AngularFireObject } from 'angularfire2/database';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-bs-navbar',
@@ -17,14 +16,18 @@ export class BsNavbarComponent implements OnInit{
  
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
+  categories$: Observable<string[]>
 
+  category: string;
   constructor(private authService: AuthService,
-             private cartService: ShoppingCartService) {
+             private cartService: ShoppingCartService,
+             private categoryService: CategoryService) {
              }
 
   async ngOnInit() {
 
     this.cart$ = await this.cartService.getCart();
+    this.categories$ = this.categoryService.getAll();
    
     this.authService.appUser$.subscribe(appUser => 
       { 
@@ -34,5 +37,10 @@ export class BsNavbarComponent implements OnInit{
   
   logout(){
     this.authService.logout();
+  }
+
+  categoryClicked(name){
+    console.log(name)
+    this.category = name;
   }
 }

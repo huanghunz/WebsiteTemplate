@@ -2,3 +2,7 @@
     cursor: pointer;
 }
 
+.navbar .nav-item{
+    padding-right: 10px
+}
+

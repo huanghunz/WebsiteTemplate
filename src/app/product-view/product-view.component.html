@@ -1,9 +1,11 @@
-<div *ngIf="product && product.title" class="card"
-
-  (click)="click()" routerLink='/shopping-cart'>
+<div *ngIf="coverImgUrl && product && product.title" class="card">
  
-  <a  class="card-img-top thumbnail" alt="product"
+  <a *ngIf="previewOnly"  routerLink='/shopping-cart' 
+               class="card-img-top img"
                [style.backgroundImage]="'url('+ product.imgUrl +')'" >
+  </a>
+  <a *ngIf="!previewOnly" class="card-img-top img"
+          [style.backgroundImage]="'url('+ coverImgUrl +')'" >
   </a>
 
   <div class="card-body">
@@ -23,7 +25,24 @@
           [shopping-cart]="cart">
 
         </app-product-quantity>
+        <div>
+          <a class="icon"
+            [style.backgroundImage]="'url('+ product.imgUrl +')'" >
+          </a>
+        </div>
         
       </ng-template>
+      
   </div>
+</div>
+<div *ngIf="!previewOnly" class="flexDiv">
+    <div class="icon" (click)="updateCoverImage(product.imgUrl)"
+    [style.backgroundImage]="'url('+ product.imgUrl +')'" >
+
+    </div> <div *ngFor="let url of product.imgUrls">
+        <div class="icon" (click)="updateCoverImage(url)"
+        [style.backgroundImage]="'url('+ url +')'" >
+    </div>
+  </div>
+
 </div>

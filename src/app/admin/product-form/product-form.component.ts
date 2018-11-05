@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {take} from 'rxjs/operators';
 
 
-export interface NewProduct{
+interface NewProduct{
   title: string;
   price: number;
   category: string;
@@ -37,29 +37,26 @@ export class ProductFormComponent implements OnInit {
     this.categories$ = categoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
+
+    this.product = {
+      title: "New Product",
+      price: 0,
+      category: "",
+      date: "",
+    
+      imgUrl: "", // cover image
+      imgUrls:[],
+
+      summary: "",
+      details:[],
+    }
     
     if (this.id && this.id != 'undefined'){
       // take operator gets 1 item, subscribe, then will not get new value
       this.productService.get(this.id).pipe(
                 take(1)).subscribe( (p:any) =>{
                   this.product = p;
-                  console.log("fecth p: ", p);
                 });
-    }
-
-    if (!this.product){
-      this.product = {
-        title: "New Product",
-        price: 0,
-        category: "",
-        date: "",
-      
-        imgUrl: "", // cover image
-        imgUrls:[],
-
-        summary: "",
-        details:[],
-      }
     }
   }
 

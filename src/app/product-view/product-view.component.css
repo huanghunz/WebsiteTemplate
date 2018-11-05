@@ -2,11 +2,26 @@
     font-weight: bold;
 }
 
-.thumbnail{
+.img{
     width: 100%;
     height: 200px;
     border-radius: 0%;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 0%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+
+.flexDiv{
+    display: flex;
+    flex-wrap: wrap;
 }

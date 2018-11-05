@@ -15,15 +15,12 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    
   }
 
   valueChanges(index, value){
 
     this.items[index] = value;
     this.itemsChange.emit(this.items);
-    console.log("index: ", index, this.items);
   }
 
   add(){
