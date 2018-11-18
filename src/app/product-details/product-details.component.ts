@@ -18,7 +18,6 @@ export class ProductDetailsComponent implements OnInit {
   id: string;
   cart : ShoppingCart;
 
-
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
               private cartService: ShoppingCartService) { 

@@ -7,3 +7,7 @@
 .material-icons {
     vertical-align: middle;
 }
+
+.container{
+    min-width: 300px;
+}
