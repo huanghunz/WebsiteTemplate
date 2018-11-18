@@ -5,3 +5,33 @@
 .navbar .nav-item{
     padding-right: 10px
 }
+
+
+
+.logo {
+    border: 2px solid black;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-size: cover;
+    background:url('https://firebasestorage.googleapis.com/v0/b/harvardschrome.appspot.com/o/assets_images%2Flogo2.png?alt=media&token=2fbefb48-82e7-4124-9350-0b9f6316f3ac');
+}
+
+.logimg{
+    width: 100px;
+    height: 100px;
+}
+
+.header-container{
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row wrap;
+    
+}
+
+.header-item{
+    -webkit-flex-basis: 50%; /* Safari 6.1+ */
+    flex-basis: 50%;
+}

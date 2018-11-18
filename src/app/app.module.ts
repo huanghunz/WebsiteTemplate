@@ -40,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon'
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule, MatMenu} from '@angular/material/menu';
 
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
@@ -84,6 +85,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatSortModule,
     MatIconModule,
     MatBadgeModule,
+    MatMenuModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,

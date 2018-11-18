@@ -20,8 +20,7 @@ export class BsNavbarComponent implements OnInit{
 
   category: string;
 
-  logo1 = "./../assets/images/logo.png"
-  logo2 = "assets/images/logo2.png"
+  isNavbarCollapsed: boolean;
 
   constructor(private authService: AuthService,
              private cartService: ShoppingCartService,
@@ -45,5 +44,9 @@ export class BsNavbarComponent implements OnInit{
 
   categoryClicked(name){
     this.category = name;
+  }
+
+  onSearchClick(obj){
+    console.log(obj)
   }
 }

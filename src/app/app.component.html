@@ -1,21 +1,12 @@
-<div class="app">
-  <div class="appHead">
-      <div class="head">
-          <div class="logo"></div>
-        </div>
-  </div>
-  <div class="appBody">
 
-    
-    <app-bs-navbar></app-bs-navbar>
-
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-
+<app-bs-navbar class="headerBar"></app-bs-navbar>
+<div class="">
+  
+  <div class="container appBody">
+    <router-outlet></router-outlet>
   </div>
   
-  <footer class="page-footer font-small blue">
+  <footer class="row page-footer font-small blue">
 
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© 2018 Copyright: Harvard's Chrome

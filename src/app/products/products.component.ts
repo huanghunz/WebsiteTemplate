@@ -54,12 +54,16 @@ export class ProductsComponent implements OnInit {
         return this.route.queryParamMap;
       }))
     .subscribe(params=>{
-        this.category = params.get('category');
-        this.applyFilter();
+        
+        this.applyFilter(params);
       })
   }
 
-  private applyFilter(){
+  private applyFilter(params){
+
+    this.category = params.get('category');
+    console.log(params);
+
     this.filteredProducts = (this.category) && this.products?
                             this.products.filter(p=>p.category === this.category)
                             : this.products
