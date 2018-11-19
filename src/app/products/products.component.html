@@ -1,20 +1,20 @@
-<div class="row">
- 
-  <div class="col">
-    <div class="row" *ngIf="cart$ | async as cart">
+
+<div *ngIf="filteredProducts">
+  <div class="row">
+    <div class="col">
+      <h6> {{ tag }} </h6>
+      <div class="row">
         <ng-container >
-          <div [className]="screenWidth > 800?
-                             'col-3': 
-                             screenWidth > 600?
-                             'col-6':
-                             'col-12'" *ngFor= "let p of filteredProducts; let i = index">
-           <app-product-view
-            [preview-only]="true"
-            [shopping-cart] = "cart"
-            [product]="p"></app-product-view>
+          <div [style.flex-basis]="flexBasis" class="flexItem" *ngFor= "let p of displayProducts; let i = index">
+              <app-product-view
+              [preview-only]="true"
+              [product]="p"></app-product-view>
           </div>
         </ng-container>
       </div>
+    </div>
   </div>
-
+  <ngb-pagination class="d-flex justify-content-center" [collectionSize]="filteredProducts.length"
+                  (pageChange)="onPageChange($event)"  maxSize="5" [pageSize]="numItemsPerPage"
+                  [(page)]="page" rotate="true" boundaryLinks="true"></ngb-pagination>
 </div>

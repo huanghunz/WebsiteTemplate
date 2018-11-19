@@ -24,8 +24,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
               private router: Router) { 
     this.subscription 
         = this.productService.getAll()
-              .subscribe((products: Product[]) => this.products 
-                      = products.sort((a, b)=>(a.title > b.title)? 1 : 0));
+              .subscribe((products: Product[]) => this.products = products);
   }
 
   ngOnInit() {

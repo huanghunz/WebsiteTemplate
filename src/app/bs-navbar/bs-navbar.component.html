@@ -15,84 +15,73 @@
    </div>
   </div>
 
-<div>
+<div class="navbardiv">
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="col-3"></div>
-    <!-- <a class="navbar-brand"  (click)="categoryClicked()" routerLink="/">HarvardsChrome</a> -->
     <button class="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#headernavbar" (click)="isNavbarCollapsed = !isNavbarCollapsed"
             aria-controls="headernavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse text-center" id="headernavbar" [ngbCollapse]="isNavbarCollapsed">
+    <div class="collapse navbar-collapse text-center" id="headernavbar" [ngbCollapse]="!isNavbarCollapsed">
       <ul  class="navbar-nav mr-auto">
-        <li class="navbar-brand"  (click)="categoryClicked()" routerLink="/">HarvardsChrome</li>
-        <li ngbDropdown class="nav-item">
-            <a ngbDropdownToggle class="nav-link dropdown-toggle"
-              id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Brands</a>
-            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-              
-              <a class="dropdown-item"
-              [class.active] = "!category" routerLink="/"
-              (click)="categoryClicked()">
-              All Categories
-            </a>
-          
-              <a class="dropdown-item" *ngFor="let c of categories$ | async; let i = index"
-                (click)="categoryClicked(c.name)"
-                routerLink="/"
-                [queryParams] = "{ category: c.key }"
-                [class.active] = "category == c.name ">
-                {{ c.name }}
-              </a>
-          
-                <!-- <app-category-view [category]="category"></app-category-view> -->
-              
-              <!-- <a class="dropdown-item" routerLink="/admin/orders">Manager Orders</a>
-              <a class="dropdown-item" routerLink="/admin/products">Manager Products</a> -->
-            </div>
+        <li class="nav-item">
+          <a class="nav-link" (click)="categoryClicked()" routerLink="/">HarvardsChrome</a>
         </li>
-
+        <li ngbDropdown class="nav-item">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle"
+            id="categories" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Brands</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="categories">            
+            <a class="dropdown-item"
+            [class.active] = "!category" routerLink="/products" (click)="categoryClicked()">
+            All Brands
+          </a>
         
+          <a class="dropdown-item" *ngFor="let c of categories$ | async; let i = index"
+            (click)="categoryClicked(c.name)"
+            routerLink="/products"
+            [queryParams] = "{ category: c.key }"
+            [class.active] = "category == c.name ">
+            {{ c.name }}
+          </a>
+          </div>
+        </li>
       </ul>
       <div class="inline my-2 my-lg-0">
-        
         <ul *ngIf="cart$ | async as cart" class="navbar-nav mr-auto"> 
-            <ng-template #anonymousUser>
-                <li class = "nav-item">
-                    <a class="nav-link" routerLink = "/login"> Login</a>
-                  </li>
-            </ng-template>
+          <ng-template #anonymousUser>
+              <li class = "nav-item">
+                  <a class="nav-link" routerLink = "/login"> Login</a>
+                </li>
+          </ng-template>
           
-            <!-- authService.appUser$ | async as user; ->this appraoch casue infinity loop without throwing error -->
-    
-            <li ngbDropdown *ngIf="appUser else anonymousUser" class="nav-item dropdown">
-              <a ngbDropdownToggle class="nav-link dropdown-toggle"
+          <!-- authService.appUser$ | async as user; ->this appraoch casue infinity loop without throwing error -->
+          <li ngbDropdown *ngIf="appUser else anonymousUser" class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle"
                 id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                
-                {{appUser.name}}</a>
-              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
-                <ng-container *ngIf="appUser.isAdmin">
-                    <a class="dropdown-item" routerLink="/admin/orders">Manager Orders</a>
-                    <a class="dropdown-item" routerLink="/admin/products">Manager Products</a>
-                </ng-container>
-                <a *ngIf="appUser" class="dropdown-item" (click)="logout()"> Log Out</a>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/shopping-cart">
-                  Shopping Cart
-                  <span *ngIf="cart" class="badge badge-warning badeg-pill">
-                    {{ cart.itemsCount }}
-                  </span>
-                </a>
-                
-            </li>
+              {{appUser.name}}
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                  <a class="dropdown-item" routerLink="/admin/orders">Manager Orders</a>
+                  <a class="dropdown-item" routerLink="/admin/products">Manager Products</a>
+              </ng-container>
+              <a *ngIf="appUser" class="dropdown-item" (click)="logout()"> Log Out</a>
+            </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/shopping-cart">
+                Shopping Cart
+                <span *ngIf="cart" class="badge badge-warning badeg-pill">
+                  {{ cart.itemsCount }}
+                </span>
+              </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -34,7 +34,7 @@ import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product-service.service';
 import { TableOverviewComponent } from './table-overview/table-overview.component';
 
-import { MatFormFieldModule, MatInputModule, MatSortModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatSortModule, MatCardModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
@@ -85,13 +85,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatSortModule,
     MatIconModule,
     MatBadgeModule,
-    MatMenuModule,
+    MatCardModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      { path:'', component: ProductsComponent },
+      { path:'', component: HomeComponent },
       { path:'products', component: ProductsComponent },
       { path:'shopping-cart', component: ShoppingCartComponent },
       { path:'login', component: LoginComponent },
@@ -107,6 +107,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
       { path:'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
     ]),
     NgbModule.forRoot(), // angular directives for bootstrap
+    
   ],
   providers: [AuthService, AuthGuardService,
               UserService, AdminAuthGuardService,

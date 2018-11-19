@@ -1,3 +1,32 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div class="carouseldiv">
+    <ngb-carousel *ngIf="images" data-interval="false">
+      <ng-template ngbSlide *ngFor="let img of images">
+        <div >
+          <img class="center-block" [src]="img" alt="Random first slide">
+          <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <br>
+  <hr>
+
+  <div>
+    <h4> NEW PRODUCTS </h4>
+    
+    <div *ngIf ="newProducts" class="new-prodcuts">
+  
+        <div class="flex-item" *ngFor="let p of newProducts">
+          <app-product-view 
+              [preview-only]="true"
+              [product]="p">
+          </app-product-view>
+        </div>
+      </div>
+  </div>
+  
+</div>

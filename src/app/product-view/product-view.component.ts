@@ -13,20 +13,14 @@ export class ProductViewComponent implements DoCheck {
  
   @Input() product: Product;
   @Input('show-actions') showActoin = true; 
-  @Input('shopping-cart') cart: ShoppingCart;
   @Input('preview-only') previewOnly = false;
 
   coverImgUrl: string;
-  constructor(private cartService: ShoppingCartService,
-              private router: Router) {
+  constructor(private router: Router) {
   }
   
   ngDoCheck() {
     if (!this.coverImgUrl) this.coverImgUrl = this.product.imgUrl;
-  }
-
-  addToCart(){
-    this.cartService.addToCart(this.product);
   }
 
   updateCoverImage(url){

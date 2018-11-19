@@ -6,8 +6,6 @@
     padding-right: 10px
 }
 
-
-
 .logo {
     border: 2px solid black;
     padding: 25px;
@@ -34,4 +32,12 @@
 .header-item{
     -webkit-flex-basis: 50%; /* Safari 6.1+ */
     flex-basis: 50%;
+}
+
+@media screen and (max-width:600px){
+    .navbardiv{
+        position: sticky;
+        top:0;
+        z-index: 100;
+    }
 }

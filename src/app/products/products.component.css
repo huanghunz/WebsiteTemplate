@@ -1,0 +1,9 @@
+.flexItem{
+    padding-left:5px;
+    padding-right:5px;
+}
+
+
+:host >>> .page-item.active .page-link {
+    background-color: rgb(0, 196, 137)
+}

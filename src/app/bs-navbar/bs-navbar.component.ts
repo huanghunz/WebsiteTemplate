@@ -5,6 +5,7 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Observable } from 'rxjs';
 import { CategoryService } from '../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bs-navbar',
@@ -24,7 +25,8 @@ export class BsNavbarComponent implements OnInit{
 
   constructor(private authService: AuthService,
              private cartService: ShoppingCartService,
-             private categoryService: CategoryService) {
+             private categoryService: CategoryService,
+             private router: Router) {
              }
 
   async ngOnInit() {
@@ -46,7 +48,7 @@ export class BsNavbarComponent implements OnInit{
     this.category = name;
   }
 
-  onSearchClick(obj){
-    console.log(obj)
+  onSearchClick(query){
+    this.router.navigate(['/products'], { queryParams: { search: query } });
   }
 }
