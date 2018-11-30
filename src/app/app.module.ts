@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { CustomFormsModule } from 'ng2-validation'
 
 import {AngularFireModule} from 'angularfire2';
@@ -40,7 +40,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon'
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatMenuModule, MatMenu} from '@angular/material/menu';
 
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
@@ -48,6 +47,8 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ItemComponent } from './admin/product-form/item/item.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { OrderService } from './services/order.service';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 
 @NgModule({
@@ -70,10 +71,11 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductQuantityComponent,
     ItemComponent,
     ProductDetailsComponent,
+    ShippingFormComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     CustomFormsModule, // for form validation
 
     MatFormFieldModule,
@@ -99,7 +101,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
       
       { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]  },
       { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
-      { path:'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
+      { path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       
       { path:'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path:'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
@@ -112,7 +114,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   providers: [AuthService, AuthGuardService,
               UserService, AdminAuthGuardService,
               CategoryService, ProductService,
-              ShoppingCartService],
+              ShoppingCartService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

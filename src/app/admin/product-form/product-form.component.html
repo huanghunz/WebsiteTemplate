@@ -5,7 +5,7 @@
     <!-- use button click instead of (ngSubmit)="save(f.value)" -->
     <form #f="ngForm" >
         <div class="form-group">
-          <label for="title">Title <span style="color: red"> * </span> </label>
+          <label for="title">Title<span style="color: red"> * </span> </label>
           <input #title="ngModel" [(ngModel)] = "product.title"
                   required
                   name="title" id="title" type="text"
@@ -16,7 +16,7 @@
         </div>
       
         <div class="form-group">
-          <label for="price">Price <span style="color: red"> * </span> </label>
+          <label for="price">Price<span style="color: red"> * </span> </label>
           <div class="input-group-prepend">
               <span class="input-group-text">$</span>
               <input #price="ngModel" [(ngModel)] = "product.price"
@@ -31,7 +31,7 @@
         </div>
       
         <div class="form-group">
-          <label for="category">Category <span style="color: red"> * </span></label>
+          <label for="category">Category<span style="color: red"> * </span></label>
           <!-- use multiple directive for multiple selection  -->
           <select #category="ngModel" [(ngModel)] = "product.category"
                   required 
@@ -89,7 +89,8 @@
       
       <app-product-view 
           [product]="product"
-          [show-actions]="false"></app-product-view>
+          [show-actions]="false">
+      </app-product-view>
   </div>
 </div>
 

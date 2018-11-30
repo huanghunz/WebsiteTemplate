@@ -1,3 +1,43 @@
-<p>
-  check-out works!
-</p>
+<div class="container">
+    <div class="py-5 text-center">
+      <h2>Checkout</h2>
+    </div>
+
+    <div class="row" *ngIf = "cart$ | async as cart">
+      <div class="col-md-4 order-md-2 mb-4 ">
+        <div  *ngIf = "cart" class="list-group mb-3 sticky">
+            <table  class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>Order</th>
+                    <th>Quantity</th>
+                    <th>Price </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of cart.items">
+                    <td class="align-center">{{ i.title }}</td>
+                    <td  class="align-center ">
+                        {{  i.quantity}}
+                    </td>
+                    <td class="align-center" >{{ i.totalPrice | currency:'USD'}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th class="align-center"></th>
+                    <th class="align-center"></th>
+                    <th class="align-center"> {{ cart.totalPrice | currency:'USD'}}</th>
+                  </tr>
+            
+                </tfoot>
+              </table>
+        </div>
+      </div>
+    
+      <div class="col-md-8 order-md-1">
+        
+      <app-shipping-form [cart]="cart"></app-shipping-form>
+      </div>
+    </div>
+  </div>

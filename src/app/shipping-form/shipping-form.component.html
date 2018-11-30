@@ -1,0 +1,78 @@
+<form #f="ngForm">
+    <div>
+      <h4 class="mb-3">Shipping address</h4>
+     
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First name <span class="red"> * </span></label>
+              <input type="text" class="form-control" 
+                     [(ngModel)]="shipping.firstName" name="firstName" #firstName="ngModel"
+                     id="firstName" placeholder="" [value]="address?.firstName" required>
+              <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
+                <small *ngIf="firstName.errors.required"> Please fill in your first name </small>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last name <span class="red"> * </span></label>
+              <input type="text"
+                    [(ngModel)]="shipping.lastName" name="lastName" #lastName="ngModel"
+                     class="form-control" id="lastName" placeholder="" value="" required>
+              <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
+                <small *ngIf="lastName.errors.required"> Please fill in your last name </small>
+              </div>
+            </div>
+          </div>
+        
+          <div class="mb-3">
+            <label for="address">Address <span class="red"> * </span></label>
+            <input type="text" class="form-control"
+                   [(ngModel)]="shipping.address" name="address" #address="ngModel"
+                   id="address" placeholder="1234 Main St" required>
+            <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+              <small *ngIf="address.errors.required"> Please fill in the address </small>
+            </div>
+          </div>
+        
+          <div class="mb-3">
+            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control"
+                   [(ngModel)]="shipping.address2" name="address2" #address2="ngModel"
+                   id="address2" placeholder="Apartment or suite">
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="state">State <span class="red"> * </span></label>
+              <select class="custom-select d-block w-100" id="state" required
+              [(ngModel)]="shipping.state" name="state" #state="ngModel">
+                <option value="">Choose...</option>
+                <option>California</option>
+              </select>
+              <div *ngIf="state.touched && state.invalid" class="alert alert-danger">
+                  <small *ngIf="state.errors.required"> Please select a state </small>
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Zip <span class="red"> * </span></label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="shipping.zip" name="zip" #zip="ngModel" minlength ="5" maxlength="5"
+                     id="zip" placeholder="" required>
+              <div *ngIf="zip.touched && zip.invalid" class="alert alert-danger">
+                <small *ngIf="zip.errors.required"> Please fill in zipcode </small>
+                <small *ngIf="zip.errors.minlength"> Please fill in 5 digits </small>
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+    
+    </div>
+
+    <hr class="mb-4">
+  
+    <button
+      (click)="checkout(f.valid)" [disabled]="f.touched && f.invalid"
+       class="btn btn-primary btn-lg btn-block" type="submit">
+       Continue to checkout</button>
+    <div *ngIf="f.touched && f.invalid" class="alert alert-danger">
+      <small> Please fill out the required fields </small>
+    </div>
+  </form>

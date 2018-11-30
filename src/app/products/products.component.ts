@@ -3,12 +3,8 @@ import { ProductService } from '../services/product-service.service';
 import { Product } from '../models/products';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { ShoppingCartService } from '../services/shopping-cart.service';
-import { Observable } from 'rxjs';
-import { ShoppingCart } from '../models/shopping-cart';
 
 import { HostListener } from "@angular/core";
-import { start } from 'repl';
 
 @Component({
   selector: 'app-products',
