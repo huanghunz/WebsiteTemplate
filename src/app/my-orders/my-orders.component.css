@@ -1,5 +1,6 @@
 .order{
     border: solid thin lavender;
+    border-radius: 4px 4px 0 0;
     margin-bottom: 10px;
 }
 
@@ -8,12 +9,14 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    padding:1px;
+    padding:2px;
+    background-color: lavender;
 }
 
 .orderHeader > div, .orderHeader > small{
     padding-left:10px;
     padding-right:10px;
+    font-size: 0.9rem;
 }
 
 .orderHeader > div{
@@ -24,5 +27,9 @@
 .orderHeader div:last-child, small:last-child {
     margin-left: auto;
     text-align: right;
+}
+
+.statusText{
+    padding:20px;
 }
       

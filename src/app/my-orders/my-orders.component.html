@@ -23,7 +23,11 @@
                 </div>
 
               </div>
-              <br>
+             
+              <div class="statusText">
+                  <h4> STATUS {{ order.status | uppercase}} </h4>
+              </div>
+              
               <div *ngFor="let item of order.items">
                 <app-order-view [order]="item"></app-order-view>
               </div>

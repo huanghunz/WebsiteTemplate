@@ -50,6 +50,8 @@ export class MyOrdersComponent implements OnInit {
 
         console.log(userOrders);
         this.orders = userOrders.reverse();
+        this.orders.forEach(
+          o => o.status = o.status == "Ordering"? "Order Recived": o.status)
         this.updateDisplayOrders(null);
       })
   }

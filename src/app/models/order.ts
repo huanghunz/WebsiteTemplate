@@ -7,6 +7,8 @@ export class Order{
     shipping: Address;
     orderTotalPrice: number;
 
+    status: "Ordering"
+
     constructor(public userId: string, 
         shipping: Address,
         cart: ShoppingCart ){
