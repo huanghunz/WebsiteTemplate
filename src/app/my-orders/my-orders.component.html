@@ -1,19 +1,39 @@
-<h1>Orders</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Customer</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-  </thead> 
-  <tbody>
-    <tr *ngFor="let order of orders$ | async">
-      <td>{{ order.shipping.firstName }}</td>
-      <td>{{ order.datePlaced | date:'longDate'}}</td>
-      <td>
-        <a >View</a>
-      </td>
-    </tr>
-  </tbody> 
-</table>
+
+<div *ngIf="orders">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col">
+        <h6> Orders </h6>
+        <div class="center-block">
+          <div class="order" *ngFor="let order of orders">
+              <div class="orderHeader">
+                <div>
+                  <small> ORDER PLACED </small>
+                  <div> {{order.datePlaced | date:'longDate'}}</div>
+                </div>
+
+                <div>
+                    <small> TOTAL </small>
+                    <div> {{order.orderTotalPrice | currency:'USD'}}</div>
+                </div>
+
+                <div>
+                    <small> ORDER ID {{ order.key | uppercase}} </small>
+                    <div > <a routerLink="">DETAILS</a> </div>
+                </div>
+
+              </div>
+              <br>
+              <div *ngFor="let item of order.items">
+                <app-order-view [order]="item"></app-order-view>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="orders.length"
+                    (pageChange)="onPageChange($event)" maxSize="5" [pageSize]="numItemsPerPage"
+                    [(page)]="page" rotate="true" boundaryLinks="true"></ngb-pagination>
+  
+</div>

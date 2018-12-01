@@ -21,7 +21,7 @@ export class AuthService {
               private userService: UserService) {
                
     this.user$ = this.afAuth.authState;
-    console.log("??", this.user$);
+    //console.log("??", this.user$);
   }
 
   loginG(){

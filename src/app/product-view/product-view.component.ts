@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit, DoCheck } from '@angular/core';
+import { Component,  Input,  DoCheck } from '@angular/core';
 import { Product } from '../models/products';
-import { ShoppingCartService } from '../services/shopping-cart.service';
-import { ShoppingCart } from '../models/shopping-cart';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,0 +1,28 @@
+.order{
+    border: solid thin lavender;
+    margin-bottom: 10px;
+}
+
+.orderHeader{
+    border: solid thin lavender;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding:1px;
+}
+
+.orderHeader > div, .orderHeader > small{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.orderHeader > div{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.orderHeader div:last-child, small:last-child {
+    margin-left: auto;
+    text-align: right;
+}
+      

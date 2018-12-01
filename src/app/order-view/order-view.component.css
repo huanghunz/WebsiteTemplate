@@ -1,0 +1,25 @@
+
+.card{
+    border:none;
+}
+
+.darkred{
+    color:rgb(161, 1, 1);
+}
+
+
+
+.img{
+    width: 150px;
+    height: 100%;
+    border-radius: 0%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display: block;
+    cursor: pointer;
+}
+
+.bottom{
+    margin-bottom: 10px;
+}

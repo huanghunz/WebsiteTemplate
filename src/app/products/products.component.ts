@@ -87,7 +87,7 @@ export class ProductsComponent implements OnInit {
 
     let category = params.get('category');
     if (category){
-      this.tag = "Category: " +   category[0].toUpperCase() + category.substring(1);
+      this.tag = "Category: " + category[0].toUpperCase() + category.substring(1);
       this.filteredProducts = this.products.filter(p=>p.category === category)
       return;
     }
@@ -114,7 +114,6 @@ export class ProductsComponent implements OnInit {
 
     let start = $event? $event : 1;
     let startIdx = (start - 1) * this.numItemsPerPage;
-    this.displayProducts = this.filteredProducts.slice(startIdx, startIdx + this.numItemsPerPage);
-    
+    this.displayProducts = this.filteredProducts.slice(startIdx, startIdx + this.numItemsPerPage);  
   }
 }

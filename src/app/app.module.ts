@@ -49,6 +49,7 @@ import { ItemComponent } from './admin/product-form/item/item.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderService } from './services/order.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { OrderViewComponent } from './order-view/order-view.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     ItemComponent,
     ProductDetailsComponent,
     ShippingFormComponent,
+    OrderViewComponent,
   ],
   imports: [
     BrowserModule,

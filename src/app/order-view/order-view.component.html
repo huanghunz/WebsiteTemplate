@@ -1,0 +1,20 @@
+<div *ngIf="order" class="card">
+ 
+    <div class="row no-gutter container">
+      <div class="col-md-3 ">
+          <a 
+          (click)="click(order.product.key)"
+          class="img"
+          [style.backgroundImage]="'url('+ order.product.imgUrl +')'" >
+</a>
+      </div>
+      <div class="col-md-9">
+        <a routerLink="" (click)="click(order.product.key)"><h6 class="card-title"> {{order.product.title}}</h6></a>
+        <p class="card-text darkred">{{ order.product.price | currency:'USD' }}</p>
+        <p class="card-text"> Quanities: {{ order.quantity }}</p>
+      </div>
+    </div>
+  
+  </div>
+  <div class="bottom"></div>
+  

@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productService.get(this.id).subscribe( (p:any) =>{
         this.product = p;
-        console.log("prduct: ", p);
+      //  console.log("prduct: ", p);
         this.product['key'] = this.id;
       });
     
