@@ -1,3 +1,13 @@
-<p>
-  admin-orders works!
-</p>
+
+
+<div>
+   <div *ngFor="let order of flattenOrders">
+      <app-table-overview
+        [headers]="headers"
+        [itemsList]="order"
+        [buttonLabel]="btnLabel"
+        (edit) ="edit($event)"
+        >
+    </app-table-overview>
+   </div>
+</div>

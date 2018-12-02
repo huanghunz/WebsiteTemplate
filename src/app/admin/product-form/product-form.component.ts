@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Observable } from 'rxjs';
-import { ProductService } from 'src/app/services/product-service.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import {take} from 'rxjs/operators';
@@ -53,7 +53,7 @@ export class ProductFormComponent implements OnInit {
     
     if (this.id && this.id != 'undefined'){
       // take operator gets 1 item, subscribe, then will not get new value
-      this.productService.get(this.id).pipe(
+      this.productService.getById(this.id).pipe(
                 take(1)).subscribe( (p:any) =>{
                   this.product = p;
                 });

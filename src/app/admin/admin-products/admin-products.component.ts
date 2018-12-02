@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductService } from './../../services/product-service.service';
+import { ProductService } from '../../services/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from './../../models/products';
 import { Router } from '@angular/router';
@@ -34,7 +34,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-   edit(key){
-     this.router.navigate(['/admin/products/', key])
+   edit(row){
+     console.log(row)
+     this.router.navigate(['/admin/products/', row.key])
    }
 }

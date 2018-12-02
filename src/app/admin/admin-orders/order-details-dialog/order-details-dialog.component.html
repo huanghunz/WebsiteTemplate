@@ -1,0 +1,32 @@
+
+<h1 mat-dialog-title>
+  {{data.firstName | titlecase }} {{ data.lastName | titlecase }} --- {{ data.userId}}
+</h1>
+<div mat-dialog-content>
+  <app-order-details [order]="data.order"></app-order-details>  
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button [matMenuTriggerFor]="menu"> 
+      Update Status <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- <div *ngFor= "let option of toggleBtnOptions">
+        <button (click)=  "editClicked(option)" mat-menu-item>{{option}}</button>
+       </div> -->
+        <button [mat-dialog-close]="'Shipped'" mat-menu-item> Shipped </button>
+        <button [mat-dialog-close]="'Cancelled'" mat-menu-item> Cancelled </button>
+   
+    </mat-menu>
+</div>
+
+<!-- <div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->

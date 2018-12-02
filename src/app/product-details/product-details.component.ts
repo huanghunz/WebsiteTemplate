@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/products';
-import { ProductService } from '../services/product-service.service';
+import { ProductService } from '../services/product.service';
 import { take } from 'rxjs/operators';
 import { ShoppingCart } from '../models/shopping-cart';
 import { ShoppingCartService } from '../services/shopping-cart.service';
@@ -29,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     
    (await this.cartService.getCart()).subscribe(c=> this.cart = c);
 
-    this.productService.get(this.id).subscribe( (p:any) =>{
+    this.productService.getById(this.id).subscribe( (p:any) =>{
         this.product = p;
       //  console.log("prduct: ", p);
         this.product['key'] = this.id;

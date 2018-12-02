@@ -45,13 +45,10 @@ export class MyOrdersComponent implements OnInit {
 
   private populateOrders(){
 
-    this.orderService.getOrdersByUser(this.userId)
+    this.orderService.getByUserId(this.userId)
       .subscribe(userOrders=>{
 
-        console.log(userOrders);
         this.orders = userOrders.reverse();
-        this.orders.forEach(
-          o => o.status = o.status == "Ordering"? "Order Recived": o.status)
         this.updateDisplayOrders(null);
       })
   }

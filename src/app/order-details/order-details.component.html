@@ -1,0 +1,35 @@
+<div class="order" *ngIf="order">
+    <div class="orderHeader">
+      <div>
+        <small> ORDER PLACED </small>
+        <div> {{order.datePlaced | date:'longDate'}}</div>
+      </div>
+
+      <div>
+          <small> TOTAL </small>
+          <div> {{order.orderTotalPrice | currency:'USD'}}</div>
+      </div>
+
+      <div>
+          <small> ORDER ID {{ order.key | uppercase}} </small>
+      </div>
+
+    </div>
+   
+
+    <div class="mid">
+      <div class="midCol statusText">
+          <small>STATUS:</small>
+          <div> {{ order.status | titlecase}} </div>
+      </div>
+      <div class="midCol">
+          <small> SHIPPING TO </small>
+          <div> {{order.shipping.address +  order.shipping.address2 | titlecase}}</div>
+          <div> {{order.shipping.state +  order.shipping.country }}</div>
+          <div> {{order.shipping.zip}}</div>
+        </div>
+    </div>
+    <div *ngFor="let item of order.items">
+      <app-order-view [order]="item"></app-order-view>
+    </div>
+</div>

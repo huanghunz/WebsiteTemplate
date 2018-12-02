@@ -31,15 +31,16 @@ import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category.service';
-import { ProductService } from './services/product-service.service';
+import { ProductService } from './services/product.service';
 import { TableOverviewComponent } from './table-overview/table-overview.component';
 
-import { MatFormFieldModule, MatInputModule, MatSortModule, MatCardModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatSortModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon'
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
@@ -50,6 +51,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { OrderService } from './services/order.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { OrderViewComponent } from './order-view/order-view.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderDetailsDialogComponent } from './admin/admin-orders/order-details-dialog/order-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +76,13 @@ import { OrderViewComponent } from './order-view/order-view.component';
     ProductDetailsComponent,
     ShippingFormComponent,
     OrderViewComponent,
+    OrderDetailsComponent,
+    OrderDetailsDialogComponent,
   ],
+  entryComponents:[
+    OrderDetailsDialogComponent
+  ],
+
   imports: [
     BrowserModule,
     FormsModule, ReactiveFormsModule,
@@ -89,6 +98,8 @@ import { OrderViewComponent } from './order-view/order-view.component';
     MatIconModule,
     MatBadgeModule,
     MatCardModule,
+    MatMenuModule,
+    MatDialogModule,
 
     AngularFireModule.initializeApp(environment.firebase, 'harvardschrome'), // angular cli will choose
     AngularFireDatabaseModule,

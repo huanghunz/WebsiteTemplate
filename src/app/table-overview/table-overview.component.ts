@@ -21,25 +21,28 @@ export class TableOverviewComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   displayedColumns: string[];
-  dataSource: MatTableDataSource<Product>;
+  dataSource: MatTableDataSource<any>;
 
   constructor() { 
+    
+   console.log(" constructor ???")
   }
 
   ngOnInit() {
+    //console.log("itme list", this.itemsList);
     this.dataSource = new MatTableDataSource(this.itemsList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     
-    if (this.buttonLabel){
+    if (this.buttonLabel && this.headers.indexOf(this.buttonLabel) == -1){
       this.headers.push(this.buttonLabel);
     }
     this.displayedColumns = this.headers;
-    //console.log("displayedColumns",this.displayedColumns);
+    console.log("displayedColumns",this.displayedColumns);
   }
 
   applyFilter(filterValue: string) {
-
+    
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {

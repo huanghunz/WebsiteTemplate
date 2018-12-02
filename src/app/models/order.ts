@@ -7,7 +7,7 @@ export class Order{
     shipping: Address;
     orderTotalPrice: number;
 
-    status: "Ordering"
+    status: string = "Order Received";
 
     constructor(public userId: string, 
         shipping: Address,

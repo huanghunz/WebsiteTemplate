@@ -13,7 +13,17 @@
         <td mat-cell *matCellDef="let row"> 
           <span *ngIf="col != buttonLabel"> {{ row[col] }}  </span>
           <span *ngIf="col == buttonLabel"> 
-            <button (click)="editClicked(row.key)" mat-stroked-button>Edit</button>
+
+            <button (click)="editClicked(row)" mat-stroked-button>{{buttonLabel}}</button>
+            <!-- <div *ngIf="toggleBtnOptions != null">
+                <button mat-button [matMenuTriggerFor]="menu">{{buttonLabel}} <mat-icon>keyboard_arrow_down</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                  <div *ngFor= "let option of toggleBtnOptions">
+                    <button (click)=  "editClicked(option)" mat-menu-item>{{option}}</button>
+                    
+                </div>
+                </mat-menu>
+            </div> -->
           </span>
         </td>
       </ng-container>
