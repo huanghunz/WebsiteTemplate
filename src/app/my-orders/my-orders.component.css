@@ -19,11 +19,6 @@
     font-size: 0.9rem;
 }
 
-.orderHeader > div{
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
 .orderHeader div:last-child, small:last-child {
     margin-left: auto;
     text-align: right;
@@ -32,4 +27,18 @@
 .statusText{
     padding:20px;
 }
-      
+
+.mid{
+    display: flex;
+    align-content: space-between;
+}
+
+
+.midCol {
+   
+    display: inline-block;
+    padding: 1em;
+}
+.mid div:last-child, small:last-child {
+    margin-left: auto;
+}

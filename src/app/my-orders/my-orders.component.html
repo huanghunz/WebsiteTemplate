@@ -19,15 +19,22 @@
 
                 <div>
                     <small> ORDER ID {{ order.key | uppercase}} </small>
-                    <div > <a routerLink="">DETAILS</a> </div>
                 </div>
 
               </div>
              
-              <div class="statusText">
-                  <h4> STATUS {{ order.status | uppercase}} </h4>
+
+              <div class="mid">
+                <div class="midCol statusText">
+                    <h4> STATUS {{ order.status | uppercase}} </h4>
+                </div>
+                <div class="midCol">
+                    <small> SHIPPING TO </small>
+                    <div> {{order.shipping.address +  order.shipping.address2}}</div>
+                    <div> {{order.shipping.state +  order.shipping.country}}</div>
+                    <div> {{order.shipping.zip}}</div>
+                  </div>
               </div>
-              
               <div *ngFor="let item of order.items">
                 <app-order-view [order]="item"></app-order-view>
               </div>

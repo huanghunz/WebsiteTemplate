@@ -51,7 +51,6 @@ import { OrderService } from './services/order.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { OrderViewComponent } from './order-view/order-view.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
