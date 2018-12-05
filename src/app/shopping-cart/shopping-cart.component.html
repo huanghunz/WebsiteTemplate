@@ -44,6 +44,6 @@
   </table>
   <!-- <button class="btn btn-warning btn-sm"
   (click)="clearCart()">Clear All</button> -->
-   <button class="btn btn-success btn-sm"
+   <button class="btn btn-success btn-sm" [disabled]="cart.itemsCount == 0"
   routerLink="/check-out">Check Out</button>
 </div>
