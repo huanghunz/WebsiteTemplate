@@ -31,16 +31,13 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productService.getById(this.id).subscribe( (p:any) =>{
         this.product = p;
-      //  console.log("prduct: ", p);
         this.product['key'] = this.id;
       });
     
   }
 
   addToCart(){
-  
     this.cartService.addToCart(this.product);
-    //console.log(this.cart$.);
   }
 
 }

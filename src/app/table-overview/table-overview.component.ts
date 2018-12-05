@@ -24,12 +24,9 @@ export class TableOverviewComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
 
   constructor() { 
-    
-   console.log(" constructor ???")
   }
 
   ngOnInit() {
-    //console.log("itme list", this.itemsList);
     this.dataSource = new MatTableDataSource(this.itemsList);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -38,7 +35,6 @@ export class TableOverviewComponent implements OnInit {
       this.headers.push(this.buttonLabel);
     }
     this.displayedColumns = this.headers;
-    console.log("displayedColumns",this.displayedColumns);
   }
 
   applyFilter(filterValue: string) {
@@ -51,7 +47,6 @@ export class TableOverviewComponent implements OnInit {
   }
 
   editClicked(key){
-    //console.log("edit :", key);
     this.edit.emit(key);
   }
 }

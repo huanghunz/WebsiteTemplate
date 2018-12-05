@@ -21,7 +21,6 @@ export class AuthService {
               private userService: UserService) {
                
     this.user$ = this.afAuth.authState;
-    //console.log("??", this.user$);
   }
 
   loginG(){
@@ -35,10 +34,8 @@ export class AuthService {
   }
 
   get appUser$():Observable<AppUser>{
-    //console.log("get app user");
     return this.user$.pipe(
       switchMap(user => { 
-       // console.log("switching map");
         if (user)
           return this.userService.get(user.uid).valueChanges();
         

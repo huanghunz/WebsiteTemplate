@@ -40,7 +40,6 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
         })
         
        this.flattenOrders.push(flatten);
-       //console.log(this.flattenOrders)
       });
 
     })
@@ -66,7 +65,6 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
    }
 
    openDialog(flattenOrder, order): void {
-    console.log(flattenOrder)
     const dialogRef = this.dialog.open(OrderDetailsDialogComponent, {
       width: '80%',
 
@@ -77,7 +75,6 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
 
       order.status = result;
       const objectWithoutKey = (object, key) => {

@@ -15,10 +15,7 @@ export class OrderService {
   async create(order){
     let r = await this.db.list("/orders/" + order.userId + "/orders")
                     .push(order);
-    let rr = this.db.object("/orders");
-
-  
-    console.log("post order result: ", r);
+          
     this.cartService.clearCart();
     return r;
   }
@@ -32,13 +29,11 @@ export class OrderService {
   getByUserId(userId: string){
     return this.db.list("/orders/" + userId + "/orders").snapshotChanges()    
       .pipe(map(changes => {
-        console.log(changes);
         return changes.map(
           a => ( { key: a.key, ...a.payload.val() }))}));
   }
 
   update(userId: string, orderId: string, order){
-    console.log("updating order: " + userId + "  " + orderId, order)
     this.db.object("/orders/" + userId + "/orders/" + orderId).update(order);
   }
 

@@ -66,11 +66,7 @@ export class ProductFormComponent implements OnInit {
   save(){
 
     let product: NewProduct;
-    product = {
-      ...this.product
-    }
-    
-    console.log("cr: ", product);
+    product = { ...this.product }
 
     if (this.id){
       this.productService.update(this.id, product);
