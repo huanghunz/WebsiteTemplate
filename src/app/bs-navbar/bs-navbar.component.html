@@ -1,6 +1,6 @@
 <div class="header-container">
     <div>
-      <a  routerLink="/"  (click)="categoryClicked()">
+      <a  routerLink="/" >
         <img class="logimg" src="https://firebasestorage.googleapis.com/v0/b/harvardschrome.appspot.com/o/assets_images%2Flogo2.png?alt=media&token=2fbefb48-82e7-4124-9350-0b9f6316f3ac">
       </a>
     </div>
@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse text-center" id="headernavbar" [ngbCollapse]="!isNavbarCollapsed">
       <ul  class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" (click)="categoryClicked()" routerLink="/">HarvardsChrome</a>
+          <a class="nav-link" routerLink="/">HarvardsChrome</a>
         </li>
         <li ngbDropdown class="nav-item">
           <a ngbDropdownToggle class="nav-link dropdown-toggle"
@@ -36,7 +36,7 @@
             aria-expanded="false">Brands</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="categories">            
             <a class="dropdown-item"
-            [class.active] = "!category" routerLink="/products" (click)="categoryClicked()">
+            [class.active] = "!category" routerLink="/products" >
             All Brands
           </a>
         
